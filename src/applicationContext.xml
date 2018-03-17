@@ -8,9 +8,26 @@
     http://www.springframework.org/schema/context/spring-context.xsd">
 
 	
-	<!--  Define your beans here  -->
-	<bean id="myCoach" class="de.marcel.springdemo.TrackCoach">
 	
+	<!-- Define the dependency -->
+	<bean id="myFortuneService"
+	class="de.marcel.springdemo.HappyFortuneService">
+	</bean>
+	
+	<!--  Define your beans here  -->
+	<bean id="myCoach" class="de.marcel.springdemo.BaseballCoach">
+	<!-- set up constructor injection -->
+	<constructor-arg ref="myFortuneService" />
+	</bean>
+	
+
+	<bean id="myCricketCoach"
+	class="de.marcel.springdemo.CricketCoach">
+	<!-- set up setter injection -->
+		<property name="fortuneService" ref="myFortuneService" />
+		<!-- inject literal values -->
+		<property name="emailAddress" value="marcelabend249@gmail.com" />
+		<property name="team" value="myBestTeam :)" />
 	</bean>
 	
 </beans>
