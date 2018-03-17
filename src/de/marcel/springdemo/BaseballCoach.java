@@ -1,5 +1,9 @@
 package de.marcel.springdemo;
 
-public class BaseballCoach {
+public class BaseballCoach implements Coach{
 
+	@Override
+	public String getDailyWorkout(){
+		return "Spend 30 minutes on batting practice";
+	}
 }
